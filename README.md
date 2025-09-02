@@ -5,7 +5,7 @@ A lightweight React hook that returns a ref and triggers a callback when clicks 
 ## ✨ Features
 - Simple API: just one hook
 - Works with any React element
-- Handles both mouse and touch events
+- Handles click events
 - Supports `stopPropagation` for preventing outside clicks when needed
 - Written in TypeScript
 
@@ -13,7 +13,7 @@ A lightweight React hook that returns a ref and triggers a callback when clicks 
 
 ```bash
 npm install @junaidakbar076/react-outside-click-handler
-```
+
 
 or with yarn:
 
