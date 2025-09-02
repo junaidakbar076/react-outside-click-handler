@@ -74,6 +74,21 @@ function App() {
   );
 }
 ```
+### Preventing Immediate Close on Reopen
+
+When you add a button to reopen the component, make sure to call `e.stopPropagation()` inside its `onClick`.  
+This prevents the click event from bubbling up and being caught as an outside click.
+
+```tsx
+<button
+  onClick={(e) => {
+    e.stopPropagation(); // ⛔ prevents immediate outside click trigger
+    setOpen(true);
+  }}
+>
+  Reopen Box
+</button>
+
 
 ## 📖 API
 
