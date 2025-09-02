@@ -1,6 +1,6 @@
 {
   "name": "@junaidakbar076/react-outside-click-handler",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A lightweight React hook that returns a ref and triggers a callback when clicks occur outside the referenced element. Supports stopPropagation to prevent outside clicks when needed.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
