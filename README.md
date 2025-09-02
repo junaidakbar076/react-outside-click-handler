@@ -92,7 +92,7 @@ This prevents the click event from bubbling up and being caught as an outside cl
 
 ## 📖 API
 
-### `useOutsideClickHandler<T extends HTMLElement>(handler?: (event: MouseEvent | TouchEvent) => void): RefObject<T>`
+### `useOutsideClickHandler<T extends HTMLElement>(handler?: (event: MouseEvent) => void): RefObject<T>`
 
 - **handler**: Callback invoked when an outside click occurs. Receives the event object.
 - **returns**: A React ref you can assign to any DOM element.
