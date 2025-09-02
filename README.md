@@ -1,83 +1,87 @@
-# react-outside-click-handler
+# React Outside Click Handler
 
-A lightweight React hook that returns a ref and triggers a callback when clicks occur **outside** the referenced element.  
-Perfect for modals, dropdowns, tooltips, and popovers.  
+A lightweight React hook that returns a ref and triggers a callback when clicks occur outside the referenced element. Perfect for modals, dropdowns, tooltips, and popovers.
 
----
+## ✨ Features
+- Simple API: just one hook
+- Works with any React element
+- Handles both mouse and touch events
+- Supports `stopPropagation` for preventing outside clicks when needed
+- Written in TypeScript
 
-## 🚀 Installation
+## 📦 Installation
 
 ```bash
-npm install react-outside-click-handler
+npm install @junaidakbar076/react-outside-click-handler
 ```
 
 or with yarn:
 
 ```bash
-yarn add react-outside-click-handler
+yarn add @junaidakbar076/react-outside-click-handler
 ```
 
----
-
-## 📦 Usage
+## 🚀 Usage
 
 ```tsx
-import React from "react";
-import { useOutsideClickHandler } from "react-outside-click-handler";
+import React, { useState } from "react";
+import { useOutsideClickHandler } from "@junaidakbar076/react-outside-click-handler";
 
-export default function App() {
+function App() {
+  const [open, setOpen] = useState(true);
   const ref = useOutsideClickHandler<HTMLDivElement>(() => {
-    alert("Clicked outside the red box!");
+    setOpen(false);
   });
 
   return (
-    <div style={{ padding: "50px" }}>
-      <div
-        ref={ref}
-        style={{
-          border: "2px solid red",
-          padding: "20px",
-          width: "200px",
-          textAlign: "center"
-        }}
-      >
-        Click inside me (safe)
-      </div>
+    <div>
+      {open && (
+        <div ref={ref} style={{ border: "1px solid black", padding: "20px" }}>
+          Click outside me to close
+        </div>
+      )}
     </div>
   );
 }
 ```
 
----
+## 🛑 Prevent Outside Clicks with `stopPropagation`
+
+If you want to stop the outside click handler from firing when clicking *inside* your component,  
+you can call `event.stopPropagation()` inside your own handler.
+
+### Example
+
+```tsx
+import { useOutsideClickHandler } from "@junaidakbar076/react-outside-click-handler";
+
+function App() {
+  const ref = useOutsideClickHandler<HTMLDivElement>((event) => {
+    alert("Outside clicked!");
+  });
+
+  return (
+    <div ref={ref} style={{ border: "2px solid red", padding: "20px" }}>
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // ⛔ prevents outside click handler
+          alert("Inside button clicked");
+        }}
+      >
+        Inside Button
+      </button>
+    </div>
+  );
+}
+```
 
 ## 📖 API
 
-### `useOutsideClickHandler(handler)`
+### `useOutsideClickHandler<T extends HTMLElement>(handler?: (event: MouseEvent | TouchEvent) => void): RefObject<T>`
 
-- **`handler`** *(optional)* → function called when a click/touch happens outside the referenced element.  
+- **handler**: Callback invoked when an outside click occurs. Receives the event object.
+- **returns**: A React ref you can assign to any DOM element.
 
-**Returns**:  
-- A **ref** (`React.RefObject<T>`) that you assign to your target element.  
+## 📄 License
 
----
-
-## ✅ Example Use Cases
-- Close a **dropdown** when clicking outside.  
-- Dismiss a **modal** by clicking outside.  
-- Hide a **tooltip/popover** when the user clicks elsewhere.  
-
----
-
-## ⚙️ Requirements
-- React **17+**  
-- Works with both **JavaScript** and **TypeScript** projects.  
-
----
-
-## 📌 Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.  
-
----
-
-## 📜 License
-MIT © [Junaid Akbar](mailto:junaidakbar076@gmail.com)  
+MIT © 2025 [Junaid Akbar](mailto:junaidakbar076@gmail.com)
