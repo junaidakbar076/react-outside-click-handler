@@ -1,0 +1,45 @@
+{
+  "name": "react-outside-click-handler",
+  "version": "1.0.0",
+  "description": "A lightweight React hook that returns a ref and triggers a callback when clicks occur outside the referenced element. Perfect for modals, dropdowns, tooltips, and popovers.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "hook",
+    "outside-click",
+    "click-outside",
+    "react-hook",
+    "dropdown",
+    "modal",
+    "tooltip",
+    "popover",
+    "handler"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junaidakbar076/react-outside-click-handler.git"
+  },
+  "author": "Junaid Akbar <junaidakbar076@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/junaidakbar076/react-outside-click-handler/issues"
+  },
+  "homepage": "https://github.com/junaidakbar076/react-outside-click-handler#readme",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0"
+  }
+}
