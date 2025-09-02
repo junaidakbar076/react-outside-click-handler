@@ -89,7 +89,51 @@ This prevents the click event from bubbling up and being caught as an outside cl
   Reopen Box
 </button>
 ```
+### Preventing Outside Click with `e.stopPropagation`
 
+The hook listens for `click` events on the whole `document`.  
+If you want to prevent the outside click handler from running, you can call `e.stopPropagation()` on any element’s click event — whether **inside or outside** the component `ref`.
+
+This is useful when:
+- You have buttons **inside the component** that should not trigger outside closing.
+- You have controls **outside the component** (like a “Reopen” button) that should not be treated as an outside click.
+
+```tsx
+import React, { useState } from "react";
+import { useOutsideClickHandler } from "@junaidakbar076/react-outside-click-handler";
+
+const Example = () => {
+  const [open, setOpen] = useState(true);
+  const ref = useOutsideClickHandler<HTMLDivElement>(() => setOpen(false));
+
+  return (
+    <div>
+      {open ? (
+        <div ref={ref} style={{ border: "1px solid #ccc", padding: "16px" }}>
+          <p>Click outside this box to close it.</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // ✅ prevents outside handler
+              alert("Inside button clicked — outside click ignored.");
+            }}
+          >
+            Inside Button
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={(e) => {
+            e.stopPropagation(); // ✅ prevents hook from treating this as outside click
+            setOpen(true);
+          }}
+        >
+          Reopen Box
+        </button>
+      )}
+    </div>
+  );
+};
+```
 ## 📖 API
 
 ### `useOutsideClickHandler<T extends HTMLElement>(handler?: (event: MouseEvent) => void): RefObject<T>`
