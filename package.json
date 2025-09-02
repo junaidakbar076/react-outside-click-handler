@@ -1,6 +1,6 @@
 {
   "name": "react-outside-click-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight React hook that returns a ref and triggers a callback when clicks occur outside the referenced element. Perfect for modals, dropdowns, tooltips, and popovers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
