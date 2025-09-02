@@ -13,7 +13,7 @@ A lightweight React hook that returns a ref and triggers a callback when clicks 
 
 ```bash
 npm install @junaidakbar076/react-outside-click-handler
-
+```
 
 or with yarn:
 
@@ -88,7 +88,7 @@ This prevents the click event from bubbling up and being caught as an outside cl
 >
   Reopen Box
 </button>
-
+```
 
 ## 📖 API
 
